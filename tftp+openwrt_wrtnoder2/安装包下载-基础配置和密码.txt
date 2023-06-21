@@ -1,0 +1,49 @@
+https://firmware-selector.openwrt.org/?version=22.03.5&target=ramips%2Fmt76x8&id=wrtnode_wrtnode2r
+
+
+上传test文件夹到远端服务的home目录下
+scp -r test root@192.168.3.53:/home/
+
+root ssh  8687jiao.
+root 文件共享 gongyu8745215
+
+user ssh  gongyu8745215
+user 文件共享 8687jiao
+
+安装命令
+opkg install pack.ipk
+
+扫描wifi
+aps
+
+使用vi进入wifi配置页面
+vw
+/etc/config/wireless
+
+config wifi-device  ra0
+        option type     ralink
+        option mode     9
+        option channel  auto
+        option txpower 100
+        option ht       20
+        option country US
+
+# REMOVE THIS LINE TO ENABLE WIFI:
+        option disabled 0
+
+config wifi-iface
+        option device   ra0
+        option network  lan
+        option mode     ap
+        option ssid     WRTnode2R_2C50
+        option encryption psk2
+        option key 12345678
+        option ApCliEnable '1'
+        option ApCliSsid 'aAP'
+        option ApCliAuthMode 'WPA2PSK'
+        option ApCliEncrypType 'AES'
+        option ApCliPassWord '87654321'
+
+修改 ApCliSsid  和 ApCliPassWord
+
+nr  重启网络
